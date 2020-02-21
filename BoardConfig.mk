@@ -62,7 +62,7 @@ TARGET_KERNEL_ARCH := arm64
 
 ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
   TARGET_KERNEL_SOURCE := kernel/xiaomi/dipper
-  TARGET_KERNEL_CONFIG := dipper-perf_defconfig
+  TARGET_KERNEL_CONFIG := dipper-Q_defconfig
   BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
   TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 else # FOX_BUILD_FULL_KERNEL_SOURCES==1
