@@ -138,3 +138,8 @@ TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 #
+# System as root
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+# BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
+#
