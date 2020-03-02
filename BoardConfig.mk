@@ -1,7 +1,7 @@
 #
 # Copyright 2018 The Android Open Source Project
 #
-# Copyright (C) 2019-2020 OrangeFox Recovery Project
+# Copyright (C) 2019-2020 SHRP Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,7 +25,23 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-LOCAL_PATH := device/xiaomi/dipper
+# SHRP Variables
+SHRP_PATH := device/xiaomi/dipper
+SHRP_MAINTAINER := DarkAngelGR
+SHRP_DEVICE_CODE := dipper
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 1
+SHRP_FONP_1 := /sys/class/leds/led:torch_0/brightness
+SHRP_FONP_2 := /sys/class/leds/led:torch_1/brightness
+SHRP_FONP_3 := /sys/class/leds/led:switch/brightness
+SHRP_REC := /dev/block/bootdevice/by-name/recovery
+SHRP_REC_TYPE := SAR
+SHRP_DEVICE_TYPE := A_Only
+SHRP_STATUSBAR_RIGHT_PADDING := 40
+SHRP_STATUSBAR_LEFT_PADDING := 40
 
 # Architecture
 TARGET_ARCH := arm64
@@ -59,20 +75,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 NEED_KERNEL_MODULE_SYSTEM := true
 TARGET_KERNEL_ARCH := arm64
-
-ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
-  TARGET_KERNEL_SOURCE := kernel/xiaomi/dipper
-  TARGET_KERNEL_CONFIG := dipper-Q_defconfig
-  BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-  TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-else # FOX_BUILD_FULL_KERNEL_SOURCES==1
-   TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image.gz-dtb
-ifeq ($(FOX_USE_STOCK_KERNEL),1)
-   TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image-stock.gz-dtb
-endif    
-  PRODUCT_COPY_FILES += \
-    $(TARGET_PREBUILT_KERNEL):kernel
-endif  # FOX_BUILD_FULL_KERNEL_SOURCES==1
+TARGET_PREBUILT_KERNEL := device/xiaomi/dipper/prebuilt/Image.gz-dtb
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm845
